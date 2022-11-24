@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Signup</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='CSS/index.css') }}">
+
+    </head>
+    <body>
+        <div class="nav" >
+            <div>
+                <h1>ZoneAlert</h1>
+            </div>
+            <div>
+                <ul>
+                    <a href="/log"><li>Login</li></a>
+                    <a href="/signup"><li>Register</li></a>
+                    <a><li>About us</li></a>
+                </ul>
+            </div>
+
+        </div>
+        <div class = 'flexjs'>
+            <div>
+                <a class="button" href = '/hospitalSignup'>Signup as Hospital</a>
+            </div>
+            <div>
+                <a class = 'button' href="/signup/user" >Signup as User</a>
+            </div>
+        </div>
+    </body>
+</html>

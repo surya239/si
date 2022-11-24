@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Register</title>
+    </head>
+    <!DOCTYPE html>
+<html>
+<body>
+
+<p id="json-result"></p>
+
+<
+<script>
+    var obj;
+
+        var result = document.getElementById("json-result");
+    const Http = new XMLHttpRequest();
+    
+        console.log("getLocation Called");
+        var bdcApi = "https://api.bigdatacloud.net/data/reverse-geocode-client"
+
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                bdcApi = bdcApi
+                    + "?latitude=" + position.coords.latitude
+                    + "&longitude=" + position.coords.longitude
+                    + "&localityLanguage=en";
+                getApi(bdcApi);
+
+            },
+            (err) => { getApi(bdcApi); },
+            {
+                enableHighAccuracy: true,
+                timeout: 5000,
+                maximumAge: 0
+            });
+    function getApi(bdcApi) {
+        Http.open("GET", bdcApi);
+        Http.send();
+        Http.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {     
+                l = this.responseText
+                console.log(l)
+                obj = JSON.parse(l)
+                console.log(typeof(obj, l))
+                console.log(obj.city)
+                // console.log(location)
+                result.innerHTML = "Your location is "+obj.city;
+                data = {data : obj.city}
+                try{
+                    const status = fetch("http://127.0.0.1:5000/home", {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data)
+});
+console.log(status)
+                } catch(e){
+                    console.log(e)
+                }
+                
+    
+            }
+        };
+    }
+   
+        
+
+console.log()
+    
+</script>
+
+</body>
+</html>
+
+
+</html>

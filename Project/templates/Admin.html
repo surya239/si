@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Admin</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='CSS/index.css') }}">
+
+    </head>
+    <body>
+        <div>
+            <form action = '/adminLogin' method="post">
+                <div>
+                    <label>Email</label>
+                    <input type="email" name = "email" id = "email" >
+                </div>
+                <div>
+                    <label>Password</label>
+                    <input type="password" name = "password" id = "password">
+                </div>
+                <div>
+                    {% if error %}
+                    <small>Wrong email or password</small>
+                    {% endif %}
+                </div>
+                <div>
+                    <input type ="submit" value="login">
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
